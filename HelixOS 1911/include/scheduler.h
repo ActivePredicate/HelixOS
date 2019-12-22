@@ -4,8 +4,8 @@
 
 
 extern uint32_t HL_LinkLIST[HL_LinkLIST_SIZE];
-extern uint32_t HL_LinkLIST_LENG;//��������
-extern uint32_t HL_LinkLIST_PTR;//��ǰִ�е�����
+extern uint32_t HL_LinkLIST_LENG;//链表长度
+extern uint32_t HL_LinkLIST_PTR;//当前执行的任务
 
 extern HL_Thread* HL_currentThread;
 extern HL_Thread* HL_nextThread;
@@ -17,7 +17,12 @@ HL_Thread* HL_LinkLIST_ACCESS_BYPID(uint8_t PID);
 void HL_LinkLIST_SWAP(uint32_t ptr1,uint32_t ptr2);
 void HL_LinkLIST_SORT(void);
 
-void HL_LinkLIST_Refresh(void);
-void HL_LinkLIST_Schedule(void);
+void HL_Thread_Delay(HL_Thread* ht,uint32_t period);//实现阻塞延时
+
+void HL_LinkLIST_Init(void);//调度器初始化
+
+void HL_LinkLIST_Refresh(void);//刷新调度器记录
+
+void HL_LinkLIST_Schedule(void);//执行调度 调用这个就行了
 
 #endif
